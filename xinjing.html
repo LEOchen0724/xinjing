@@ -1,0 +1,1360 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="心靜。圍棋，以棋養心，以靜致遠。從第一手棋開始，陪不同目標的你，<br>找到自己的學棋步調。">
+<title>心靜。圍棋｜以棋養心・以靜致遠</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap">
+<style>
+:root {
+  --paper:#f6f3ec;
+  --ink:#242423;
+  --wood:#ae7c43;
+  --muted:#67645e
+}
+* {
+  box-sizing:border-box
+}
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:95px
+}
+body {
+  margin:0;
+  color:var(--ink);
+  background:var(--paper);
+  font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%237e735f' opacity='.055' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E")
+}
+a {
+  color:inherit;
+  text-decoration:none
+}
+button {
+  font:inherit
+}
+header {
+  height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5.8%;
+  gap:24px;
+  background:#f8f5ee;
+  position:sticky;
+  top:0;
+  z-index:10;
+  border-bottom:1px solid #ded7c855
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  flex-shrink:0
+}
+.mark {
+  width:40px;
+  height:40px;
+  border:4px double #8f887b;
+  border-radius:50%;
+  position:relative;
+  transform:rotate(-20deg)
+}
+.mark:after {
+  content:'';
+  position:absolute;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,#65645d,#080909 70%);
+  bottom:-9px;
+  right:-2px;
+  box-shadow:1px 3px 4px #0003
+}
+.brand strong {
+  display:block;
+  font-size:32px;
+  letter-spacing:5px;
+  font-weight:900
+}
+.brand small {
+  display:block;
+  text-align:center;
+  letter-spacing:3px;
+  font-size:12px;
+  margin-top:2px
+}
+nav {
+  display:flex;
+  gap:34px;
+  align-items:center;
+  font-size:15px;
+  letter-spacing:2px
+}
+nav a {
+  padding:10px 0;
+  border-bottom:1px solid transparent
+}
+nav a:hover,nav a[aria-current] {
+  border-color:var(--wood)
+}
+.pill {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  background:var(--ink);
+  color:#fff;
+  padding:14px 30px;
+  border-radius:6px;
+  font-size:18px;
+  letter-spacing:3px;
+  transition:background .2s,transform .2s
+}
+.pill:hover {
+  background:#574735;
+  transform:translateY(-2px)
+}
+header>.pill {
+  font-size:14px;
+  border-radius:30px;
+  padding:12px 30px
+}
+.menu {
+  display:none;
+  border:1px solid #ccc;
+  background:transparent;
+  padding:8px 12px;
+  border-radius:4px
+}
+.hero {
+  min-height:414px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden
+}
+.hero-image {
+  position:absolute;
+  right:0;
+  top:0;
+  height:100%;
+  width:64%;
+  object-fit:cover;
+  object-position:center
+}
+.hero:after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,#f6f3ec 0%,#f6f3ec 30%,#f6f3ecdf 38%,#f6f3ec00 57%)
+}
+.hero-content {
+  position:relative;
+  z-index:1;
+  margin:50px 5.8%;
+  max-width:670px
+}
+.hero h1 {
+  font-family:"BiauKai","Microsoft JhengHei","PingFang TC",sans-serif;
+  font-size:clamp(35px,4.5vw,70px);
+  line-height:1.4;
+  letter-spacing:5px;
+  margin:0 0 13px;
+  font-weight:900;
+  color:#111
+}
+.hero p {
+  font-size:clamp(17px,2vw,29px);
+  letter-spacing:5px;
+  margin:0 0 30px
+}
+.section {
+  padding:32px 3% 40px;
+  max-width:1600px;
+  margin:auto
+}
+.heading {
+  text-align:center;
+  margin-bottom:24px
+}
+.heading h2 {
+  font-size:30px;
+  letter-spacing:4px;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:38px
+}
+.heading h2:before,.heading h2:after {
+  content:'';
+  height:1px;
+  width:15%;
+  background:#a7a094
+}
+.heading p {
+  font-size:15px;
+  letter-spacing:3px;
+  color:var(--muted);
+  line-height:1.8;
+  margin:7px 0 0
+}
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px
+}
+.frame {
+  position:relative;
+  padding:13px;
+  border:1px solid #98672e;
+  border-radius:5px;
+  background:repeating-linear-gradient(2deg,#ba864d 0,#d7aa75 3px,#b78043 5px,#c99863 9px);
+  box-shadow:0 3px 8px #30220c25,inset 0 0 0 4px #f0c38b66
+}
+.frame:before,.frame:after {
+  content:'';
+  position:absolute;
+  z-index:2;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  box-shadow:1px 3px 5px #0005;
+  background:radial-gradient(circle at 32% 23%,#646765,#0a0c0b 70%)
+}
+.frame:before {
+  top:4px;
+  left:8px
+}
+.frame:after {
+  bottom:8px;
+  right:8px;
+  background:radial-gradient(circle at 32% 23%,#fff,#e5e3da 65%,#b1b1a8)
+}
+.frame:nth-child(2):before {
+  background:radial-gradient(circle at 32% 23%,#fff,#e5e3da 65%,#b1b1a8)
+}
+.frame:nth-child(2):after {
+  background:radial-gradient(circle at 32% 23%,#646765,#0a0c0b 70%)
+}
+.frame-inner {
+  background-color:#faf7ef;
+  background-image:linear-gradient(#b2956c09 1px,transparent 1px),linear-gradient(90deg,#b2956c09 1px,transparent 1px);
+  background-size:20px 20px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:14px;
+  padding:8px;
+  min-height:245px;
+  border:3px double #dbc5a5
+}
+.feature-copy {
+  padding:15px 13px
+}
+.feature-copy h3 {
+  font-size:24px;
+  margin:6px 0 14px
+}
+.feature-copy h3:after {
+  content:'';
+  display:block;
+  width:34px;
+  height:2px;
+  background:#ad813c;
+  margin-top:8px
+}
+.feature-copy p {
+  font-size:15px;
+  line-height:1.75;
+  margin:0;
+  color:#57534d
+}
+.frame img {
+  width:100%;
+  height:100%;
+  min-height:226px;
+  object-fit:cover
+}
+.details {
+  border-top:1px solid #ded6c8;
+  padding:65px 6%
+}
+.eyebrow {
+  color:#896a43;
+  letter-spacing:4px;
+  font-size:12px
+}
+.course-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px
+}
+.course-card {
+  padding:30px;
+  border:1px solid #cec3ae;
+  background:#ffffff4d
+}
+.course-card .number {
+  font-size:14px;
+  letter-spacing:3px;
+  color:#9a783f
+}
+.course-card h3 {
+  font-size:25px;
+  margin:14px 0
+}
+.course-card p {
+  line-height:1.9;
+  color:var(--muted)
+}
+.text-link {
+  display:inline-block;
+  margin-top:10px;
+  border-bottom:1px solid #a77c43;
+  padding-bottom:5px
+}
+.split {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:60px
+}
+.split img {
+  width:100%;
+  max-height:360px;
+  object-fit:contain
+}
+.split h2 {
+  font-size:32px;
+  letter-spacing:3px
+}
+.split p {
+  line-height:2;
+  color:var(--muted)
+}
+.placeholder {
+  border:1px dashed #bdb09a;
+  padding:22px;
+  color:#716b61;
+  background:#fff5;
+  line-height:1.9
+}
+.news {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:24px 0;
+  border-top:1px solid #d9d0c1
+}
+.news span {
+  font-size:13px;
+  color:var(--muted)
+}
+details {
+  border-bottom:1px solid #d9d0c1;
+  padding:18px 0
+}
+summary {
+  cursor:pointer;
+  font-size:18px
+}
+details p {
+  color:var(--muted);
+  line-height:1.9;
+  max-width:850px
+}
+.contact {
+  background:#eae3d5;
+  padding:55px 6%
+}
+.contact-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px
+}
+.contact h2 {
+  font-size:34px;
+  margin:10px 0
+}
+.contact p {
+  line-height:1.9;
+  color:var(--muted)
+}
+dl {
+  margin:0
+}
+dl>div {
+  display:grid;
+  grid-template-columns:110px 1fr;
+  border-bottom:1px solid #c9beab;
+  padding:14px 0
+}
+dt {
+  color:#796344
+}
+dd {
+  margin:0;
+  line-height:1.8
+}
+.contact small {
+  color:#7b7164
+}
+footer {
+  background:#242423;
+  color:#eee;
+  padding:30px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px
+}
+footer .brand strong {
+  font-size:22px
+}
+footer .brand small {
+  font-size:9px
+}
+footer nav {
+  font-size:12px;
+  gap:22px
+}
+footer>small {
+  color:#bdbbb5;
+  font-size:11px
+}
+.back-top {
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  border:1px solid #aa9270;
+  border-radius:50%;
+  background:#f7f3e9;
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  z-index:5
+}
+@media(min-width:1600px) {
+  .hero {
+    min-height:480px
+  }
+}
+@media(max-width:1200px) {
+  nav {
+    gap:18px
+  }
+  header {
+    padding:0 3%
+  }
+  .brand strong {
+    font-size:26px
+  }
+  .feature-copy {
+    padding:8px
+  }
+  .feature-copy h3 {
+    font-size:21px
+  }
+  .frame-inner {
+    gap:7px
+  }
+  .feature-copy p {
+    font-size:14px
+  }
+  footer nav {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center
+  }
+}
+@media(max-width:900px) {
+  header {
+    height:auto;
+    min-height:76px;
+    position:relative;
+    flex-wrap:wrap;
+    padding:16px 5%;
+    gap:16px
+  }
+  .menu {
+    display:none
+  }
+  header>.pill {
+    display:inline-flex;
+    margin-left:auto;
+    font-size:13px;
+    padding:10px 18px
+  }
+  header nav {
+    display:flex;
+    position:static;
+    width:100%;
+    order:3;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px 24px;
+    background:transparent;
+    padding:4px 0;
+    box-shadow:none;
+    font-size:14px
+  }
+  header nav a {
+    padding:8px 0
+  }
+  header nav.open {
+    display:flex
+  }
+  .hero-content {
+    margin-left:5%;
+    max-width:70%
+  }
+  .hero p {
+    letter-spacing:2px
+  }
+  .features {
+    grid-template-columns:1fr
+  }
+  .frame-inner {
+    grid-template-columns:1.4fr 1fr;
+    min-height:220px
+  }
+  .frame img {
+    height:230px;
+    min-height:0
+  }
+  .feature-copy {
+    padding:14px
+  }
+  .feature-copy p {
+    font-size:16px
+  }
+  .course-grid {
+    grid-template-columns:1fr
+  }
+  .split,.contact-grid {
+    gap:25px
+  }
+  .heading h2 {
+    font-size:26px;
+    gap:15px
+  }
+  .details {
+    padding:45px 6%
+  }
+}
+@media(max-width:580px) {
+  header {
+    gap:12px;
+    padding:14px 5%
+  }
+  header nav {
+    gap:4px 18px;
+    font-size:13px;
+    letter-spacing:1px
+  }
+  header>.pill {
+    font-size:12px;
+    padding:10px 14px;
+    letter-spacing:1px
+  }
+  .brand {
+    gap:10px
+  }
+  .mark {
+    width:32px;
+    height:32px
+  }
+  .brand strong {
+    font-size:24px
+  }
+  .brand small {
+    font-size:10px
+  }
+  .hero {
+    min-height:560px;
+    align-items:flex-start
+  }
+  .hero-image {
+    width:100%;
+    height:58%;
+    top:auto;
+    bottom:0
+  }
+  .hero:after {
+    background:linear-gradient(180deg,#f6f3ec 0%,#f6f3ec 32%,#f6f3ec00 64%)
+  }
+  .hero-content {
+    max-width:100%;
+    margin:34px 6%
+  }
+  .hero h1 {
+    font-size:34px;
+    letter-spacing:2px
+  }
+  .hero p {
+    font-size:16px;
+    margin-bottom:23px
+  }
+  .pill {
+    font-size:15px;
+    padding:12px 23px
+  }
+  .section {
+    padding:30px 5%
+  }
+  .heading p {
+    letter-spacing:1px;
+    font-size:13px
+  }
+  .heading h2:before,.heading h2:after {
+    width:9%
+  }
+  .frame {
+    padding:9px
+  }
+  .frame-inner {
+    gap:8px;
+    padding:5px;
+    grid-template-columns:1.2fr 1fr
+  }
+  .feature-copy {
+    padding:8px
+  }
+  .feature-copy h3 {
+    font-size:21px
+  }
+  .feature-copy p {
+    font-size:14px
+  }
+  .frame img {
+    height:100%;
+    min-height:245px
+  }
+  .split,.contact-grid {
+    grid-template-columns:1fr
+  }
+  .split img {
+    max-height:280px
+  }
+  .news {
+    flex-direction:column;
+    gap:8px
+  }
+  footer {
+    flex-direction:column;
+    text-align:center
+  }
+  footer nav {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px 18px;
+    font-size:12px
+  }
+  .contact {
+    padding:40px 6%
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior:auto
+  }
+  .pill {
+    transition:none
+  }
+}
+.teacher-wrap {
+  max-width:1180px;
+  margin:auto
+}
+.teacher-wrap .section-head {
+  margin-bottom:28px
+}
+.teacher-wrap .section-head h2 {
+  font-size:30px;
+  letter-spacing:3px;
+  margin:10px 0
+}
+.teacher-wrap .section-head p {
+  color:var(--muted)
+}
+.kicker {
+  color:#896a43;
+  letter-spacing:2px;
+  font-size:14px
+}
+.teacher-card {
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(200px,320px) minmax(0,1fr);
+  gap:36px;
+  align-items:center;
+  padding:28px;
+  border:10px solid #b6814c;
+  border-radius:5px;
+  background:#fbf8f0;
+  box-shadow:inset 0 0 0 2px #e8c99c,0 5px 14px #60421d26
+}
+.teacher-photo {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  border-radius:2px
+}
+.teacher-info h3 {
+  font-size:29px;
+  margin:12px 0
+}
+.teacher-info p {
+  color:var(--muted);
+  line-height:1.8
+}
+.teacher-info dl {
+  display:grid;
+  grid-template-columns:5em minmax(0,1fr);
+  gap:12px 20px;
+  line-height:1.8;
+  margin:20px 0
+}
+.teacher-info dt {
+  font-weight:700;
+  color:var(--ink)
+}
+.teacher-info dd {
+  color:var(--muted)
+}
+.teacher-info .pill {
+  font-size:16px;
+  letter-spacing:1px
+}
+@media(max-width:760px) {
+  .teacher-card {
+    grid-template-columns:1fr;
+    padding:22px;
+    gap:22px;
+    border-width:8px
+  }
+  .teacher-photo {
+    max-width:320px;
+    margin:auto
+  }
+  .teacher-info dl {
+    gap:12px
+  }
+  .teacher-info h3 {
+    font-size:26px
+  }
+}
+.tags {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:24px
+}
+.tags span {
+  background:#eee5d5;
+  color:#6c5132;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:13px
+}
+.method-wrap {
+  max-width:1180px;
+  margin:auto
+}
+.method-wrap h2 {
+  font-size:30px;
+  letter-spacing:2px
+}
+.steps {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:35px
+}
+.step b {
+  font-size:32px;
+  color:#a77a44
+}
+.step h3 {
+  font-size:22px
+}
+.step p {
+  line-height:1.8;
+  color:var(--muted)
+}
+.approach {
+  background:#ece6db
+}
+.contact-box {
+  border:5px solid #b6814c;
+  padding:28px;
+  background:#faf7ef
+}
+.contact-box b {
+  color:#896338
+}
+.contact-box p {
+  margin:8px 0 24px;
+  overflow-wrap:anywhere
+}
+.contact-box p:last-child {
+  margin-bottom:0
+}
+.contact-box a:hover {
+  text-decoration:underline
+}
+.hero-content p {
+  font-size:clamp(16px,1.5vw,23px);
+  letter-spacing:2px
+}
+.heading h2 {
+  overflow-wrap:anywhere
+}
+@media(max-width:900px) {
+  .steps {
+    grid-template-columns:1fr
+  }
+  .heading h2 {
+    font-size:25px
+  }
+  .heading h2:before,.heading h2:after {
+    flex-shrink:0;
+    width:8%
+  }
+}
+@media(max-width:580px) {
+  .hero {
+    min-height:620px
+  }
+  .hero h1 {
+    font-size:34px
+  }
+  .hero-content p {
+    line-height:1.8
+  }
+  .contact h2 {
+    font-size:28px
+  }
+}
+/* 無木框：宣紙與墨灰 */
+:root {
+  --wood:#747474
+}
+.frame {
+  border:1px solid #d8d5ce;
+  border-radius:8px;
+  padding:12px;
+  background:#f5f3ee;
+  box-shadow:0 3px 12px #2020200c
+}
+.frame-inner {
+  border:0;
+  background-color:#faf8f3;
+  background-image:none;
+  border-radius:3px
+}
+.teacher-card {
+  border:1px solid #d8d5ce;
+  border-radius:8px;
+  background:#faf8f3;
+  box-shadow:0 3px 12px #2020200c
+}
+.contact-box {
+  border:1px solid #c9c6be;
+  border-radius:8px;
+  background:#faf8f3;
+  box-shadow:none
+}
+.course-card {
+  border-color:#d8d5ce;
+  border-radius:8px;
+  background:#faf8f3
+}
+.feature-copy h3:after {
+  background:#747474
+}
+.eyebrow,.kicker,.course-card .number,.step b,.contact-box b {
+  color:#66645e
+}
+.text-link {
+  border-color:#747474
+}
+.tags span {
+  background:#eae8e2;
+  color:#5e5b55
+}
+@media(max-width:760px) {
+  .teacher-card {
+    border-width:1px
+  }
+  .contact-box {
+    border-width:1px
+  }
+}
+/* V03 思源黑體繁體版 */
+body,button,input,select,textarea,.hero h1,.brand {
+  font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif
+}
+h1,h2,h3,.brand strong {
+  font-weight:700
+}
+.hero p,.heading p {
+  line-height:1.8
+}
+/* 師資介紹：讓每位老師的卡片成為獨立段落 */
+#teachers .teacher-card + .teacher-card {
+  margin-top: 40px;
+}
+@media (max-width: 760px) {
+  #teachers .teacher-card + .teacher-card {
+    margin-top: 28px;
+  }
+}
+/* 第二位老師：滑鼠移入時放大整張證書圖片 */
+.teacher-image-area {
+  position: relative;
+  width: min(240px, 100%);
+  margin-top: 24px;
+  cursor: zoom-in;
+}
+.teacher-zoom-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 2px solid #d8d5ce;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 12%);
+  pointer-events: none;
+  transform-origin: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.teacher-image-area:hover,
+.teacher-image-area:focus-within {
+  z-index: 30;
+}
+.teacher-image-area:hover .teacher-zoom-image,
+.teacher-image-area:focus-within .teacher-zoom-image {
+  transform:
+    translate(var(--teacher-zoom-x, 0px), var(--teacher-zoom-y, 0px))
+    scale(var(--teacher-zoom-scale, 1));
+  box-shadow: 0 12px 32px rgb(0 0 0 / 24%);
+}
+.teacher-zoom-image:focus-visible {
+  outline: 3px solid #747474;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .teacher-zoom-image {
+    transition: none;
+  }
+}
+</style>
+<link rel="stylesheet" href="assets/notice-board.css">
+<link rel="stylesheet" href="assets/ui-refined.css">
+</head>
+<body id="home">
+<header><a class="brand" href="#home" aria-label="心靜。圍棋首頁"><span class="mark" aria-hidden="true"></span><span><strong>心靜。圍棋</strong><small>以棋養心・以靜致遠</small></span></a><button class="menu" aria-label="開啟選單" aria-expanded="false" aria-controls="navigation">選單 ☰</button>
+<nav id="navigation" aria-label="主要導覽"><a href="#home" aria-current="page">首頁</a><a href="#about">關於我們</a><a href="#courses">課程介紹</a><a href="#teachers">師資團隊</a><a href="#method">學習方式</a><a href="#environment">學習環境</a><a href="#news">最新消息</a><a href="#faq">常見問題</a>
+</nav><a class="pill" href="#contact">聯絡我們</a>
+</header>
+<main>
+<!-- 首頁主視覺 開始 -->
+<section class="hero" aria-labelledby="hero-title"><img class="hero-image" src="textures/160692.jpg" alt="暖陽照映木質圍棋棋盤與黑白棋子" fetchpriority="high">
+<div class="hero-content">
+<h1 id="hero-title">學習棋藝，<br>從現在開始。</h1>
+<p>從第一手棋開始，陪不同目標的你，<br>找到自己的學棋步調。</p><a class="pill" href="#courses">看看適合你的課程 <span aria-hidden="true">→</span></a>
+</div>
+</section>
+<!-- 首頁主視覺 結束 -->
+<!-- 關於我們 開始 -->
+<section id="about" class="section">
+<div class="heading">
+<h2>關於心靜。圍棋</h2>
+<p>以棋啟智・以靜養心・在黑白之間，看見更好的自己。</p>
+</div>
+<div class="features">
+<article class="frame">
+<div class="frame-inner">
+<div class="feature-copy">
+<h3>教學理念</h3>
+<p>圍棋不只是技巧，更是一種思考方式與生活態度。在黑白之間，練習專注、耐心與獨立思考，讓每一次落子，都成為認識自己與探索世界的起點。</p>
+</div><img src="textures/160711.jpg" alt="木製棋罐與黑白棋子" loading="lazy">
+</div>
+</article>
+<article class="frame">
+<div class="frame-inner">
+<div class="feature-copy">
+<h3>課程特色</h3>
+<p>
+採用小班制教學，依程度分班，才會有品質，才能帶出成效，透過互動式教學，成效有趣兼具，藉由引導讓孩子找到方向</p>
+</div><img src="textures/160687.jpg" alt="手持白棋思考落子" loading="lazy">
+</div>
+</article>
+<article class="frame">
+<div class="frame-inner">
+<div class="feature-copy">
+<h3>學習環境</h3>
+<p>寧靜、溫暖、專注，是我們期待的學習氛圍。讓孩子在自在的節奏中思考，在交流與對弈之間，享受圍棋帶來的樂趣與成長。</p>
+</div><img src="textures/160706.jpg" alt="木質圍棋教室風格示意" loading="lazy">
+</div>
+</article>
+</div>
+</section>
+<!-- 關於我們 結束 -->
+<!-- 課程 開始 -->
+<section id="courses" class="section details">
+<div class="heading"><span class="eyebrow">COURSES</span>
+<h2>每個階段，都有自己的學習方式</h2>
+<p>以下為示範課程方向。<br>正式課程、時段與費用可依補習班實際安排更新。</p>
+</div>
+<div class="course-grid">
+<article class="course-card">
+              <!-- <span class="number">兒童啟蒙課</span> -->
+              <h3>啟蒙四堂課</h3>
+              <p>
+                適合沒有學過圍棋的孩子，<br>
+                教學重點<br>
+                1.棋子擺放位置、氣<br>
+                2.叫吃、氣盡提取（提吃）<br>
+                3.逃走（方向）、禁著點<br>
+                4.打劫<br>
+                </p>
+                 <h4>開課時間</h4>
+                <p>
+               週一、週五：<br>
+              - 13:30～15:00
+              - 15:00～16:30<br>
+              - 17:00～18:30
+              - 19:00～20:30<br>
+                
+              週六：<br>
+              - 09:00～10:30
+              - 10:40～12:10<br>
+              - 13:00～14:30
+              - 15:00～16:30<br>
+              - 17:00～18:30
+              - 19:00～20:30<br>
+              </p>
+
+            </article>
+<article class="course-card">
+              <!-- <span class="number"> 常態班 </span> -->
+              <h3>基礎訓練</h3>
+                            <p>
+                適合沒有學過圍棋的孩子，<br>
+                教學重點<br>
+                1.棋子擺放位置、氣<br>
+                2.叫吃、氣盡提取（提吃）<br>
+                3.逃走（方向）、禁著點<br>
+                4.打劫<br>
+                </p>
+                 <h4>開課時間</h4>
+                <p>
+              
+                週一17:00~18:30<br>
+                　　19:00~20:30<br>
+                週二19:00~20:30<br>
+                週五17:00~18:30<br>
+                週六13:00~14:30<br>
+              </p>
+
+            </article>
+<article class="course-card">
+              <!-- <span class="number"> </span> -->
+              <h3> 敬請期待  </h3>
+              <p>
+                  <!-- 整理觀念、找出弱點，<br>
+                  透過循序練習建立解題能力與學習信心。<br>
+
+                  週一17:00~18:30<br>
+                  　　19:00~20:30<br>
+                  週二19:00~20:30<br>
+                  週五17:00~18:30<br>
+                  週六13:00~14:30<br> -->
+              </p>
+
+            </article>
+</div>
+</section>
+<!-- 課程 結束 -->
+<!-- 師資 開始 -->
+<section class="section details" id="teachers" aria-labelledby="teachers-title">
+        <div class="teacher-wrap">
+          <div class="section-head">
+            <div class="kicker">TEACHERS</div>
+            <h2 id="teachers-title">師資介紹</h2>
+            <p>認識陪伴你學習圍棋的老師。</p>
+          </div>
+          <article class="teacher-card">
+            <img class="teacher-photo" src="textures/pngtree-user-icon-png-image_1796659.jpg" alt="老師介紹照片" loading="lazy" width="544" height="965">
+            <div class="teacher-info">
+              <div class="kicker">心靜圍棋 · 教學團隊</div>
+              <h3>老師 王偉進 </h3>
+              <dl>
+                <dt>教師理念</dt>
+                <dd> 改變，往往才是進步的開始 </dd>
+                <dt>棋力段位</dt>
+                <dd> 業餘。七段 </dd>
+                <dt>教學經歷</dt>
+                <dd> 4年 </dd>
+                <dt>授課對象</dt>
+                <dd> 全齡皆宜 </dd>
+              </dl>
+              <a class="pill">教師證照</a> 
+              <div class="teacher-image-area" data-teacher-zoom>
+                <img
+                  class="teacher-zoom-image"
+                  src="textures/659658251_17932421061217945_1826897750469235305_n.jpg"
+                  alt="教師證書圖片"
+                  loading="lazy"
+                  decoding="async"
+                  tabindex="0"
+                >
+              </div>
+             
+            </div>
+
+          </div>
+      </section>
+<!-- 師資 結束 -->
+
+<!-- 教學方式 開始 -->
+<section id="method" class="section details approach">
+        <div class="method-wrap">
+          <div class="section-head">
+            <div class="kicker">OUR APPROACH</div>
+            <h2>把「聽懂」變成「做得到」</h2>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <b>01</b>
+              <h3>了解起點</h3>
+              <p>
+                先確認學習目標與目前遇到的困難，
+                選擇合適的課程方向。
+              </p>
+            </div>
+            <div class="step">
+              <b>02</b>
+              <h3>拆解重點</h3>
+              <p>
+                以清楚的概念說明搭配練習，
+                讓每一步都有理由可循。
+              </p>
+            </div>
+            <div class="step">
+              <b>03</b>
+              <h3>持續調整</h3>
+              <p>
+                依學習狀況回顧進度，
+                調整節奏並建立穩定的練習方法。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+<!-- 教學方式 結束 -->
+<!-- 教室環境 開始 -->
+<section id="environment" class="section details split"><img src="textures/classroom.jpg" alt="參考圖中的暖木色圍棋教室示意" loading="lazy">
+<div><span class="eyebrow">讓心安靜，讓思考發生</span>
+<h2>學習環境</h2>
+<p>木質的溫潤、棋盤的秩序，與黑白棋子清脆的落子聲，構成這份網站的空間想像。</p>
+<p>目前圖片為風格示意。正式教室照片、地址與交通方式待補充。</p><a class="text-link" href="#contact">詢問上課地點 →</a>
+</div>
+</section>
+<!-- 教室環境 結束 -->
+<!-- 佈告欄 開始 -->
+<section
+  id="news"
+  class="section details"
+  aria-labelledby="board-title"
+>
+  <div class="heading">
+    <h2 id="board-title">佈告欄</h2>
+    <p>課程公告・活動資訊・學員嘉獎</p>
+  </div>
+
+  <!-- 公告列表：兩則公告之間保留 20px 間距 -->
+  <div style="display: grid; gap: 20px;">
+
+    <!-- 公告結尾 -->
+    <article class="board-post">
+      <a class="board-link" href="news/award-demo.html">
+        <span class="board-meta">
+          <time datetime="2026-10-20">2026.10.20</time>
+          <span class="board-tag">學員嘉獎</span>
+          <span class="board-demo">示範・虛構</span>
+        </span>
+
+        <span class="board-title">
+          賀！心靜圍棋學員榮獲圍棋交流賽佳績
+        </span>
+
+        <span class="board-preview">
+          從第一手棋開始，看見耐心練習累積的成長。
+        </span>
+
+        <span class="board-read">閱讀全文 →</span>
+      </a>
+    </article>
+    <!-- 公告結尾 -->
+    
+
+  </div>
+</section>
+<!-- 佈告欄 結束 -->
+
+
+
+
+<!-- 常見問題 開始 -->
+<section id="faq" class="section details">
+<div class="heading"><span class="eyebrow">FAQ</span>
+<h2>報名前常見的問題</h2>
+</div>
+<details>
+            <summary>不確定適合哪一種課程，可以先諮詢嗎？</summary>
+            <p>
+              當然可以！歡迎先與我們聊聊孩子的年齡與學習經驗。
+              若孩子曾學過圍棋，我們會進一步了解程度，協助安排合適的班級，讓孩子在適合自己的步調中學習與成長。              
+            </p>
+          </details>
+<details>
+            <summary>課程時間與費用在哪裡查看？</summary>
+            <p>
+              看心情我愛收多少，收多少
+            </p>
+          </details>
+<details>
+            <summary>有試聽或程度評估嗎？</summary>
+            <p>沒有你當我賣肉乾啊? 還想試吃?</p>
+          </details>
+</section>
+<!-- 常見問題 結束 -->
+<!-- 聯絡資訊 開始 -->
+<section id="contact" class="contact">
+        <div class="contact-grid">
+          <div>
+            <div class="eyebrow">LET'S TALK</div>
+            <h2>下一步，從聊聊目標開始。</h2>
+            <p>
+              告訴我們想學什麼、希望改善什麼，
+              就能一起規劃更清楚的學習方向。
+            </p>
+          </div>
+          <div class="contact-box">
+            <b>聯絡電話</b> 
+            <p>
+              0963368472<br>
+              
+            </p>
+
+            <b>LINE ID</b>
+            <p>0963368472</p>
+
+            <b>instagram</b>
+            <p>
+              <a href="https://www.instagram.com/xinjing.go/"> xinjing.go</a>
+            </p>
+
+
+
+            <b>E-mail</b>
+            <p>
+              <a href="mailto:kass3266@gmail.com"> kass3266@gmail.com </a>
+            </p>
+
+            <b>我們在</b>
+            <p>
+              <a href="https://maps.app.goo.gl/aFNbgoNWefghb4vy9"> 台南市永康區埔園街430號 </a>
+            </p>
+
+          </div>
+        </div>
+      </section>
+<!-- 聯絡資訊 結束 -->
+</main>
+<footer><a class="brand" href="#home"><span><strong>心靜。圍棋</strong><small>以棋養心・以靜致遠</small></span></a>
+<nav aria-label="頁尾導覽">
+  <a href="#home">首頁</a>
+  <a href="#about">關於我們</a>
+  <a href="#courses">課程介紹</a>
+  <a href="#teachers">師資團隊</a>
+  <a href="#method">學習方式</a>
+  <a href="#environment">學習環境</a>
+  <a href="#contact">聯絡我們</a>
+</nav><small>© <span id="year">2026</span> 心靜。圍棋 · 第一版</small>
+</footer>
+<a class="back-top" href="#home" aria-label="回到頁首">↑</a>
+
+<script>const menu=document.querySelector('.menu'),nav=document.querySelector('#navigation');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'關閉選單':'開啟選單')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});document.querySelector('#year').textContent=new Date().getFullYear();</script>
+<script>
+/* 證書圖片預覽：維持整張圖片可見，最多放大五倍。 */
+(() => {
+  const areas = Array.from(document.querySelectorAll('[data-teacher-zoom]'));
+  const padding = 16;
+
+  function fitPreview(area) {
+    const image = area.querySelector('.teacher-zoom-image');
+    if (!image || !image.complete || !image.naturalWidth) return;
+
+    const rect = area.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
+    const viewportWidth = document.documentElement.clientWidth;
+    const viewportHeight = document.documentElement.clientHeight;
+    const scale = Math.min(
+      5,
+      Math.max(1, viewportWidth - padding * 2) / rect.width,
+      Math.max(1, viewportHeight - padding * 2) / rect.height
+    );
+    const halfWidth = rect.width * scale / 2;
+    const halfHeight = rect.height * scale / 2;
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const targetX = Math.min(
+      viewportWidth - padding - halfWidth,
+      Math.max(padding + halfWidth, centerX)
+    );
+    const targetY = Math.min(
+      viewportHeight - padding - halfHeight,
+      Math.max(padding + halfHeight, centerY)
+    );
+
+    image.style.setProperty('--teacher-zoom-scale', String(scale));
+    image.style.setProperty('--teacher-zoom-x', `${targetX - centerX}px`);
+    image.style.setProperty('--teacher-zoom-y', `${targetY - centerY}px`);
+  }
+
+  areas.forEach(area => {
+    const image = area.querySelector('.teacher-zoom-image');
+    area.addEventListener('pointerenter', () => fitPreview(area));
+    area.addEventListener('focusin', () => fitPreview(area));
+    image.addEventListener('load', () => fitPreview(area));
+    fitPreview(area);
+  });
+
+  function updateActivePreviews() {
+    areas.forEach(area => {
+      if (area.matches(':hover') || area.contains(document.activeElement)) {
+        fitPreview(area);
+      }
+    });
+  }
+
+  window.addEventListener('resize', updateActivePreviews);
+  window.addEventListener('scroll', updateActivePreviews, { passive: true });
+})();
+</script>
+
+</body>
+</html>
