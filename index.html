@@ -979,14 +979,14 @@ h1,h2,h3,.brand strong {
 <section id="about" class="section">
 <div class="heading">
 <h2>關於心靜。圍棋</h2>
-<p>以棋啟智・以靜養心・在黑白之間，看見更好的自己。</p>
+<p>以棋啟智・以靜養心・在每一步中，培養思考與判斷力</p>
 </div>
 <div class="features">
 <article class="frame">
 <div class="frame-inner">
 <div class="feature-copy">
 <h3>教學理念</h3>
-<p>圍棋不只是技巧，更是一種思考方式與生活態度。在黑白之間，練習專注、耐心與獨立思考，讓每一次落子，都成為認識自己與探索世界的起點。</p>
+<p>學習圍棋不僅限於技巧，透過下棋能更激發思考的模式。圍棋和諧與平衡更是影響深遠。培養獨立思考的能力，心靜而穩定；慎勿輕速不只是在下棋，也是日常中重要的精神。</p>
 </div><img src="textures/160711.jpg" alt="木製棋罐與黑白棋子" loading="lazy">
 </div>
 </article>
@@ -995,7 +995,7 @@ h1,h2,h3,.brand strong {
 <div class="feature-copy">
 <h3>課程特色</h3>
 <p>
-採用小班制教學，依程度分班，才會有品質，才能帶出成效，透過互動式教學，成效有趣兼具，藉由引導讓孩子找到方向</p>
+採用小班制教學，掌握學生的個別學習狀況、維護教學品質。對談與互動更多，激發孩子的思考潛能，同時保留圍棋的趣味，讓學習變成一件愉快的事。</p>
 </div><img src="textures/160687.jpg" alt="手持白棋思考落子" loading="lazy">
 </div>
 </article>
@@ -1012,78 +1012,163 @@ h1,h2,h3,.brand strong {
 <!-- 關於我們 結束 -->
 <!-- 課程 開始 -->
 <section id="courses" class="section details">
-<div class="heading"><span class="eyebrow">COURSES</span>
-<h2>每個階段，都有自己的學習方式</h2>
-<p>以下為示範課程方向。<br>正式課程、時段與費用可依補習班實際安排更新。</p>
-</div>
-<div class="course-grid">
-<article class="course-card">
-              <!-- <span class="number">兒童啟蒙課</span> -->
-              <h3>啟蒙四堂課</h3>
-              <p>
-                適合沒有學過圍棋的孩子，<br>
-                教學重點<br>
-                1.棋子擺放位置、氣<br>
-                2.叫吃、氣盡提取（提吃）<br>
-                3.逃走（方向）、禁著點<br>
-                4.打劫<br>
-                </p>
-                 <h4>開課時間</h4>
-                <p>
-               週一、週五：<br>
-              - 13:30～15:00
-              - 15:00～16:30<br>
-              - 17:00～18:30
-              - 19:00～20:30<br>
-                
-              週六：<br>
-              - 09:00～10:30
-              - 10:40～12:10<br>
-              - 13:00～14:30
-              - 15:00～16:30<br>
-              - 17:00～18:30
-              - 19:00～20:30<br>
-              </p>
+  <style>
+    #courses .course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+      overflow: visible;
+    }
 
-            </article>
-<article class="course-card">
-              <!-- <span class="number"> 常態班 </span> -->
-              <h3>基礎訓練</h3>
-                            <p>
-                適合沒有學過圍棋的孩子，<br>
-                教學重點<br>
-                1.棋子擺放位置、氣<br>
-                2.叫吃、氣盡提取（提吃）<br>
-                3.逃走（方向）、禁著點<br>
-                4.打劫<br>
-                </p>
-                 <h4>開課時間</h4>
-                <p>
-              
-                週一17:00~18:30<br>
-                　　19:00~20:30<br>
-                週二19:00~20:30<br>
-                週五17:00~18:30<br>
-                週六13:00~14:30<br>
-              </p>
+    #courses .course-card {
+      position: relative;
+      min-width: 0;
+      overflow: visible;
+    }
 
-            </article>
-<article class="course-card">
-              <!-- <span class="number"> </span> -->
-              <h3> 敬請期待  </h3>
-              <p>
-                  <!-- 整理觀念、找出弱點，<br>
-                  透過循序練習建立解題能力與學習信心。<br>
+    #courses .course-image-card {
+      padding: 0;
+    }
 
-                  週一17:00~18:30<br>
-                  　　19:00~20:30<br>
-                  週二19:00~20:30<br>
-                  週五17:00~18:30<br>
-                  週六13:00~14:30<br> -->
-              </p>
+    /* 放大時，圖片顯示在其他卡片上方 */
+    #courses .course-image-card:hover,
+    #courses .course-image-card:focus-within {
+      z-index: 30;
+    }
 
-            </article>
-</div>
+    /* 沿用教師證的預覽容器 */
+    #courses .course-image-link {
+      display: block;
+      position: relative;
+      width: 100%;
+      margin: 0;
+      cursor: zoom-in;
+    }
+
+    #courses .course-image-link .teacher-zoom-image {
+      display: block;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      object-fit: contain;
+      border: 0;
+      border-radius: 8px;
+      background: #fff;
+      pointer-events: none;
+      transform-origin: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #courses .course-image-link:hover .teacher-zoom-image,
+    #courses .course-image-link:focus-within .teacher-zoom-image {
+      transform:
+        translate(
+          var(--teacher-zoom-x, 0px),
+          var(--teacher-zoom-y, 0px)
+        )
+        scale(var(--teacher-zoom-scale, 1));
+
+      box-shadow: 0 12px 32px rgb(0 0 0 / 24%);
+    }
+
+    #courses .course-image-link:focus-visible {
+      outline: 3px solid #747474;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 900px) {
+      #courses .course-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #courses .course-image-link .teacher-zoom-image {
+        transition: none;
+      }
+    }
+  </style>
+
+  <div class="heading">
+    <span class="eyebrow">COURSES</span>
+
+    <h2>每個階段，都有自己的學習方式</h2>
+
+    <p>
+      以下為示範課程方向。<br>
+      正式課程、時段與費用可依補習班實際安排更新。
+    </p>
+  </div>
+
+  <div class="course-grid">
+    <!-- 第一張課程圖片 -->
+    <article class="course-card course-image-card">
+      <a
+        class="teacher-image-area course-image-link"
+        data-teacher-zoom
+        href="./textures/754463223_122186936234912372_2215659303802772906_n.jpg"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="在新分頁開啟啟蒙四堂課圖片"
+      >
+        <img
+          class="teacher-zoom-image"
+          src="./textures/754463223_122186936234912372_2215659303802772906_n.jpg"
+          alt="啟蒙四堂課課程介紹與開課時間"
+          loading="lazy"
+          decoding="async"
+        >
+      </a>
+    </article>
+
+    <!-- 基礎訓練 -->
+    <article class="course-card">
+      <h3>基礎訓練</h3>
+
+      <p>
+        適合沒有學過圍棋的孩子，<br>
+        教學重點<br>
+        1. 棋子擺放位置、氣<br>
+        2. 叫吃、氣盡提取（提吃）<br>
+        3. 逃走（方向）、禁著點<br>
+        4. 打劫
+      </p>
+
+      <h4>開課時間</h4>
+
+      <p>
+        週一 17:00～18:30<br>
+        　　 19:00～20:30<br>
+        週二 19:00～20:30<br>
+        週五 17:00～18:30<br>
+        週六 13:00～14:30
+      </p>
+    </article>
+
+    <!-- 第三張課程圖片 -->
+    <article class="course-card course-image-card">
+      <a
+        class="teacher-image-area course-image-link"
+        data-teacher-zoom
+        href="./textures/887213492_122202481742912372_5701509633743930708_n.jpg"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="在新分頁開啟課程介紹圖片"
+      >
+        <img
+          class="teacher-zoom-image"
+          src="./textures/887213492_122202481742912372_5701509633743930708_n.jpg"
+          alt="課程介紹與開課時間"
+          loading="lazy"
+          decoding="async"
+        >
+      </a>
+    </article>
+  </div>
 </section>
 <!-- 課程 結束 -->
 <!-- 師資 開始 -->
@@ -1167,8 +1252,8 @@ h1,h2,h3,.brand strong {
 <section id="environment" class="section details split"><img src="textures/classroom.jpg" alt="參考圖中的暖木色圍棋教室示意" loading="lazy">
 <div><span class="eyebrow">讓心安靜，讓思考發生</span>
 <h2>學習環境</h2>
-<p>看看我們的教室</p>
-<p>看看我們的教室</p><a class="text-link" href="#contact">詢問上課地點 →</a>
+<p>木質的溫潤、棋盤的秩序，與黑白棋子清脆的落子聲，構成這份網站的空間想像。</p>
+<p>目前圖片為風格示意。正式教室照片、地址與交通方式待補充。</p><a class="text-link" href="#contact">詢問上課地點 →</a>
 </div>
 </section>
 <!-- 教室環境 結束 -->
@@ -1231,12 +1316,12 @@ h1,h2,h3,.brand strong {
 <details>
             <summary>課程時間與費用在哪裡查看？</summary>
             <p>
-              待公告
+              看心情我愛收多少，收多少
             </p>
           </details>
 <details>
             <summary>有試聽或程度評估嗎？</summary>
-            <p>有的歡迎來電詢問</p>
+            <p>沒有你當我賣肉乾啊? 還想試吃?</p>
           </details>
 </section>
 <!-- 常見問題 結束 -->
